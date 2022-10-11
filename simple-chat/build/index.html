@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="./static/images/favicon.png">
+    <title>Live chat</title>
+</head>
+<body>
+    <div id="app">
+        <simple-chat-header login="Дженнифер" state="default"></simple-chat-header>
+        <div class="container main-content">
+<!--            companion - ник собеседника в чате, который для каждого аккаунта авторизованного пользователя -->
+<!--            вытягивается из базы данных-->
+            <simple-chat companion="Jennifer"></simple-chat>
+<!--            <simple-chat companion="evil_murloc"></simple-chat>-->
+        </div>
+    </div>
+    <script>
+        // тут можно менять пользователя и смотреть на диалог "от разных сторон"
+        // ВАЖНО, необходимо изменить аттрибут companion в компоненте simple-chat (!)
+        // такие данные приходили бы с базы данных
+        // требуется обновление страницы, очевидно
+        // window.localStorage.setItem("login", "Jennifer");
+        window.localStorage.setItem("login", "evil_murloc");
+    </script>
+    <script src="src/app/ui/ProfilePhoto.js"></script>
+    <script type="module" src="src/app/ui/Message.js"></script>
+    <script src="src/app/components/Header.js"></script>
+    <script src="src/app/components/Chat.js"></script>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>
