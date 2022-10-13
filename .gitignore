@@ -191,3 +191,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,jetbrains+all,visualstudiocode
 node_modules
 simple-chat/node_modules
+simple-chat/build

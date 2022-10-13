@@ -1,5 +1,6 @@
-class SimpleChat extends HTMLElement {
+import runOnKeys from '../../helpers/runOnKeys.js';
 
+class SimpleChat extends HTMLElement {
     constructor() {
         super();
         this.companion = null;
@@ -35,7 +36,8 @@ class SimpleChat extends HTMLElement {
         this.submitBtnEl = document.querySelector('.chat__input__submit');
 
         this.submitBtnEl.addEventListener('click', this.sendMessage.bind(this));
-
+        runOnKeys(this.sendMessage.bind(this), "ControlLeft", "Enter");
+        runOnKeys(this.sendMessage.bind(this), "ControlRight", "Enter");
         if (window.localStorage[this._getChatName()]) {
             // чтобы обновлять статус прочтения сообщения, необходимо обновлять сообщения
             // и записывать их в localStorage заново
@@ -55,19 +57,21 @@ class SimpleChat extends HTMLElement {
     }
 
     sendMessage() {
-        if (!window.localStorage[this._getChatName()]){
-            window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages: [] }));
+        if (this.inputEl.textContent && this.inputEl.textContent.trim()) {
+            if (!window.localStorage[this._getChatName()]){
+                window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages: [] }));
+            }
+            let messages = JSON.parse(window.localStorage[this._getChatName()]).messages;
+            const message = {
+                time: this._getCurrentTime(),
+                sender: window.localStorage['login'],
+                text: this.inputEl.textContent,
+                checked: 'not',
+            };
+            messages.push(message);
+            window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages }));
+            this._createMessageElement({ message });
         }
-        let messages = JSON.parse(window.localStorage[this._getChatName()]).messages;
-        const message = {
-            time: this._getCurrentTime(),
-            sender: window.localStorage['login'],
-            text: this.inputEl.textContent,
-            checked: 'not',
-        };
-        messages.push(message);
-        window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages }));
-        this._createMessageElement({ message });
         this.inputEl.textContent = '';
     }
 
