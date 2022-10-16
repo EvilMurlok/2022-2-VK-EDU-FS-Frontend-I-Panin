@@ -3,27 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+            name="viewport"
+            content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
     <link rel="icon" href="./static/images/favicon.png">
     <title>Live chat</title>
 </head>
 <body>
+<!--    ну прям как во Vue почти, мне нравится! :)-->
     <div id="app">
-        <simple-chat-header login="Дженнифер" state="default"></simple-chat-header>
-        <div class="container main-content">
-<!--            companion - ник собеседника в чате, который для каждого аккаунта авторизованного пользователя -->
-<!--            вытягивается из базы данных-->
-            <simple-chat companion="Jennifer"></simple-chat>
-<!--            <simple-chat companion="evil_murloc"></simple-chat>-->
-        </div>
+        <div class="main-content"></div>
     </div>
-    <script>
-        // тут можно менять пользователя и смотреть на диалог "от разных сторон"
-        // ВАЖНО, необходимо изменить аттрибут companion в компоненте simple-chat (!)
-        // такие данные приходили бы с базы данных
-        // требуется обновление страницы, очевидно
-        // window.localStorage.setItem("login", "Jennifer");
-        window.localStorage.setItem("login", "evil_murloc");
+    <script type="module">
+        import setUpApplication from "../src/helpers/setUpApplication.js";
+        setUpApplication();
     </script>
 <script type="text/javascript" src="bundle.js"></script></body>
 </html>
