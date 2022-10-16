@@ -95,11 +95,14 @@ input {
   }
 }
 .main-content {
-  margin-top: 56px;
-  padding: 0 16px;
-  @media (min-width: $screen-sm-min) {
-    padding: 0;
-  }
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../static/images/chat_bg.png') no-repeat;
+  background-size: 100% 100%;
+  overflow: auto;
 }
 
 .icon {
@@ -129,4 +132,13 @@ input {
   opacity: 0.5;
   transition: 0.2s ease;
   pointer-events: none;
+}
+
+.text-hidden {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }

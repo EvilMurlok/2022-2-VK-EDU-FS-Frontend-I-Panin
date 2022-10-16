@@ -1,0 +1,60 @@
+@import "../constants.scss";
+
+.chat-info {
+  width: 100%;
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray;
+  cursor: pointer;
+  background: $white;
+
+  @media (min-width: $screen-sm-min) {
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
+}
+.chat-info:hover {
+  background: $gray;
+}
+
+.chat-info__content,
+.chat-info__right-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-info__content {
+  margin-left: 20px;
+}
+
+.chat-info__left-block {
+  display: flex;
+}
+.chat-info__msg {
+  color: $secondary;
+  font-size: 14px;
+}
+.chat-info__login {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.chat-info__status {
+  display: flex;
+  justify-content: flex-end;
+  .chat-info__status-number {
+    color: $white;
+    font-size: 12px;
+    line-height: 1;
+  }
+  .chat-info__number-new-msg {
+    background: $purple;
+    border-radius: 14px;
+    padding: 4px 8px;
+  }
+}
+
+

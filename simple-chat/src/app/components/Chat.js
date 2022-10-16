@@ -1,4 +1,5 @@
-import runOnKeys from '../../helpers/runOnKeys.js';
+import runOnKeys from '../../helpers/commonHelpers.js';
+import { createMessageElement } from '../../helpers/createElementHelpers.js';
 
 class SimpleChat extends HTMLElement {
     constructor() {
@@ -21,7 +22,6 @@ class SimpleChat extends HTMLElement {
                         <button class="btn chat__input__attachment">
                             <img class="icon" src="static/icons/attachment.svg" alt="dots icon">
                         </button>
-                    <!--                            <div class="textarea-placeholder">Введите сообщение</div>-->
                     </div>
                     <button class="btn chat__input__submit">
                             <img class="icon" src="static/icons/send_msg.svg" alt="dots icon">
@@ -46,7 +46,8 @@ class SimpleChat extends HTMLElement {
                 if (message.checked === 'not' && message.sender !== window.localStorage['login']) {
                     message.checked = 'been';
                 }
-                this._createMessageElement({ message });
+                const messageElement = createMessageElement({ message });
+                this.messageWrapper.insertBefore(messageElement, this.messageWrapper.firstChild);
                 updatedMessages.push(message);
             }
             window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages: updatedMessages }));
@@ -70,7 +71,8 @@ class SimpleChat extends HTMLElement {
             };
             messages.push(message);
             window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages }));
-            this._createMessageElement({ message });
+            const messageElement = createMessageElement({ message });
+            this.messageWrapper.insertBefore(messageElement, this.messageWrapper.firstChild);
         }
         this.inputEl.textContent = '';
     }
@@ -83,18 +85,9 @@ class SimpleChat extends HTMLElement {
     }
 
     // было принято решение, что при создании чата, ему будет даваться название в localStorage
-    // nickname1_nickname2, где nickname1 и nickname2 упорядочены по алфавиту
+    // nickname1#nickname2, где nickname1 и nickname2 упорядочены по алфавиту
     _getChatName() {
-        return [this.companion, window.localStorage['login']].sort().join('_');
-    }
-
-    _createMessageElement({ message }) {
-        const messageElement = document.createElement('chat-message');
-        messageElement.setAttribute('time', message.time);
-        messageElement.setAttribute('sender', message.sender);
-        messageElement.setAttribute('text', message.text);
-        messageElement.setAttribute('checked', message.checked);
-        this.messageWrapper.insertBefore(messageElement, this.messageWrapper.firstChild);
+        return [this.companion, window.localStorage['login']].sort().join('#');
     }
 }
 

@@ -1,17 +1,13 @@
 @import "../constants.scss";
 @import "../ui/message.scss";
 
-$indent-size: 16px !default;
-
 .chat__background {
   overflow: hidden;
   position: absolute;
-  top: 56px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('../static/images/chat_bg.png') no-repeat;
-  background-size: 100% 100%;
 }
 .chat__container {
   padding: $indent-size;

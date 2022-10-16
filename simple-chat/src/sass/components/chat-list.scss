@@ -1,0 +1,31 @@
+@import "../constants.scss";
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.chat-list__new-chat {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: $yellow;
+  box-shadow: 0 0 45px $gray, 0 5px 3px #94969b;
+  cursor: pointer;
+}
+.chat-list__new-chat:hover {
+  background: $yellow-light;
+}
+
+.chat-list__icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
