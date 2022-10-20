@@ -6,7 +6,10 @@ $screen-md-min: 992px !default;
 $screen-lg-min: 1200px !default;
 $screen-fhd-min: 1600px !default;
 
+$indent-size: 16px !default;
+
 $white: #ffffff !default;
+$gray: #d0d0d0;
 $gray8: rgb(215, 215, 215,0.6);
 $secondary: #6d717b;
 $bg-purple: #e2abff;
@@ -14,4 +17,5 @@ $black8: rgba(0, 0, 0, 0.8) !default;
 $black8-87: rgba(0, 0, 0, 0.87) !default;
 
 $purple: rgb(142, 36, 170) !default;
-
+$yellow:  rgb(248, 215, 103) !default;
+$yellow-light: rgb(244, 218, 138) !default;

@@ -3,7 +3,6 @@ export default function runOnKeys(cb, ...codes) {
 
     document.addEventListener('keydown', function(event) {
         pressed.add(event.code);
-        console.log(event.code);
         for (let code of codes) {
             if (!pressed.has(code)) {
                 return;
@@ -17,3 +16,8 @@ export default function runOnKeys(cb, ...codes) {
         pressed.delete(event.code);
     });
 };
+
+export function getCompanionLogin(chatName) {
+    const nicknames = chatName.split('#');
+    return nicknames[0] === window.localStorage['login'] ? nicknames[1] : nicknames[0];
+}

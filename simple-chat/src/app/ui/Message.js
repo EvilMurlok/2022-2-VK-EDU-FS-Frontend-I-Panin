@@ -8,7 +8,7 @@ class Message extends HTMLElement {
         const text = this.getAttribute('text');
         const isChecked = this.getAttribute('checked'); // not, been
         const checkedIcon = (sender === window.localStorage["login"])
-            ? `<img class="message__checked" src="static/icons/${isChecked}Checked.svg" alt="dots icon" />`
+            ? `<img class="message__checked" src="static/icons/${isChecked}Checked.svg" alt="" />`
             : '';
         this.innerHTML = `
             <div class="message ${this._getSenderOfSms(sender)}">
