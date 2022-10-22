@@ -1,4 +1,5 @@
 import runOnKeys from '../../helpers/commonHelpers.js';
+import { sleep } from '../../helpers/commonHelpers.js';
 import { createMessageElement } from '../../helpers/createElementHelpers.js';
 
 class SimpleChat extends HTMLElement {
@@ -57,7 +58,7 @@ class SimpleChat extends HTMLElement {
         this.submitBtnEl.removeEventListener('click', this.sendMessage.bind(this));
     }
 
-    sendMessage() {
+    async sendMessage() {
         if (this.inputEl.textContent && this.inputEl.textContent.trim()) {
             if (!window.localStorage[this._getChatName()]){
                 window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages: [] }));
@@ -72,7 +73,18 @@ class SimpleChat extends HTMLElement {
             messages.push(message);
             window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages }));
             const messageElement = createMessageElement({ message });
+            const messageElements = document.getElementsByTagName('chat-message');
+            for (let msgElement of messageElements) {
+                msgElement.classList.add('sending-message');
+            }
+            messageElement.classList.add('sending-message');
             this.messageWrapper.insertBefore(messageElement, this.messageWrapper.firstChild);
+            this.inputEl.textContent = '';
+            await sleep(500); // время анимации появления
+            messageElement.classList.remove('sending-message');
+            for (let msgElement of messageElements) {
+                msgElement.classList.remove('sending-message');
+            }
         }
         this.inputEl.textContent = '';
     }

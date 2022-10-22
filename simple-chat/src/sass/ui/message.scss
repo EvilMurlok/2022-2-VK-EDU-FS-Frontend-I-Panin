@@ -3,9 +3,6 @@
 .message {
   margin-top: 8px;
   display: flex;
-  &__text {
-
-  }
   &__time {
     align-self: flex-end;
     font-size: 10px;
@@ -45,4 +42,17 @@
   margin-left: 3px;
   width: 12px;
   height: 12px;
+}
+
+.sending-message {
+  animation-name: sending-message;
+  animation-duration: 500ms;
+}
+@keyframes sending-message {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }

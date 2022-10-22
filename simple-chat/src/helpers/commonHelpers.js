@@ -21,3 +21,9 @@ export function getCompanionLogin(chatName) {
     const nicknames = chatName.split('#');
     return nicknames[0] === window.localStorage['login'] ? nicknames[1] : nicknames[0];
 }
+
+export async function sleep(time) {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(true), time);
+    });
+}

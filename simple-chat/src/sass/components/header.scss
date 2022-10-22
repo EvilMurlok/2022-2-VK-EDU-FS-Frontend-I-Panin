@@ -62,3 +62,10 @@
 .header__search {
   margin-left: auto;
 }
+#back-icon {
+  transition: all 0.4s ease;
+}
+
+#back-icon:hover {
+  transform: scale(1.25);
+}

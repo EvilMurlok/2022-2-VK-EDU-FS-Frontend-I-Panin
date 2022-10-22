@@ -24,3 +24,11 @@ export function openChatList() {
     createChatListElement(mainContentElement);
     changeHeaderState('messenger');
 }
+
+export function openCreationChatModal() {
+
+}
+
+export function closeCreationChatModal() {
+
+}

@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
+  animation-name: appearance;
+  animation-duration: 700ms;
 }
 
 .chat-list__new-chat {
@@ -19,9 +21,11 @@
   background: $yellow;
   box-shadow: 0 0 45px $gray, 0 5px 3px #94969b;
   cursor: pointer;
+  transition: all 0.5s ease;
 }
 .chat-list__new-chat:hover {
-  background: $yellow-light;
+  transform: scale(1.5);
+  background: $yellow-hard;
 }
 
 .chat-list__icon {

@@ -1,4 +1,4 @@
-import { openChatList } from "../../helpers/openPageHelpers.js";
+import { openChatList } from "../../helpers/changePageHelpers.js";
 
 class SimpleChatHeader extends HTMLElement {
     constructor() {

@@ -142,3 +142,12 @@ input {
   text-overflow: ellipsis;
   word-break: break-word;
 }
+
+@keyframes appearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
