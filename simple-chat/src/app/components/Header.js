@@ -1,4 +1,4 @@
-import { openChatList } from "../../helpers/openPageHelpers.js";
+import { openChatList, closeSimpleChat } from "../../helpers/changePageHelpers.js";
 
 class SimpleChatHeader extends HTMLElement {
     constructor() {
@@ -27,13 +27,11 @@ class SimpleChatHeader extends HTMLElement {
         }
         this.innerHTML = this._getInnerHTML(this.state);
         this.backBtn = document.querySelector('#back-icon');
-        this.backBtn?.addEventListener('click', openChatList.bind(this));
+        this.backBtn?.addEventListener('click', this._backToChatList.bind(this));
     }
     disconnectedCallback() {
-        this.backBtn?.removeEventListener('click', openChatList.bind(this));
+        this.backBtn?.removeEventListener('click', this._backToChatList.bind(this));
     }
-
-
 
     static get observedAttributes() {
         return ['state', 'login', 'last-seen'];
@@ -45,7 +43,7 @@ class SimpleChatHeader extends HTMLElement {
             this.innerHTML = this._getInnerHTML(this.state);
             setTimeout(() => {
                 this.backBtn = document.querySelector('#back-icon');
-                this.backBtn?.addEventListener('click', openChatList.bind(this));
+                this.backBtn?.addEventListener('click', this._backToChatList.bind(this));
             }, 100);
         } else if (attr === 'login') {
             this.login = newValue;
@@ -58,6 +56,11 @@ class SimpleChatHeader extends HTMLElement {
                 this.innerHTML = this._getInnerHTML(this.state);
             }, 50);
         }
+    }
+
+    _backToChatList() {
+        closeSimpleChat();
+        openChatList();
     }
 
     _getInnerHTML(state) {

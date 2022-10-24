@@ -1,4 +1,4 @@
-import openCurrentChat from "../../helpers/openPageHelpers";
+import openCurrentChat from "../../helpers/changePageHelpers";
 import { getCompanionLogin } from "../../helpers/commonHelpers.js";
 
 class ChatInfo extends HTMLElement {

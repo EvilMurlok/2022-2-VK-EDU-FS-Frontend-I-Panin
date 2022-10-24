@@ -1,5 +1,5 @@
-import runOnKeys from '../../helpers/commonHelpers.js';
-import { createMessageElement } from '../../helpers/createElementHelpers.js';
+import runOnKeys, {sleep, getCurrentTime} from '../../helpers/commonHelpers.js';
+import {createMessageElement} from '../../helpers/createElementHelpers.js';
 
 class SimpleChat extends HTMLElement {
     constructor() {
@@ -46,42 +46,44 @@ class SimpleChat extends HTMLElement {
                 if (message.checked === 'not' && message.sender !== window.localStorage['login']) {
                     message.checked = 'been';
                 }
-                const messageElement = createMessageElement({ message });
+                const messageElement = createMessageElement({message});
                 this.messageWrapper.insertBefore(messageElement, this.messageWrapper.firstChild);
                 updatedMessages.push(message);
             }
-            window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages: updatedMessages }));
+            window.localStorage.setItem(this._getChatName(), JSON.stringify({messages: updatedMessages}));
         }
     }
+
     disconnectedCallback() {
         this.submitBtnEl.removeEventListener('click', this.sendMessage.bind(this));
     }
 
-    sendMessage() {
+    async sendMessage() {
         if (this.inputEl.textContent && this.inputEl.textContent.trim()) {
-            if (!window.localStorage[this._getChatName()]){
-                window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages: [] }));
-            }
-            let messages = JSON.parse(window.localStorage[this._getChatName()]).messages;
+            const messages = JSON.parse(window.localStorage[this._getChatName()]).messages;
             const message = {
-                time: this._getCurrentTime(),
+                time: getCurrentTime(),
                 sender: window.localStorage['login'],
                 text: this.inputEl.textContent,
                 checked: 'not',
             };
             messages.push(message);
-            window.localStorage.setItem(this._getChatName(), JSON.stringify({ messages }));
-            const messageElement = createMessageElement({ message });
+            window.localStorage.setItem(this._getChatName(), JSON.stringify({messages}));
+            const messageElement = createMessageElement({message});
+            const messageElements = document.getElementsByTagName('chat-message');
+            for (let msgElement of messageElements) {
+                msgElement.classList.add('sending-message');
+            }
+            messageElement.classList.add('sending-message');
             this.messageWrapper.insertBefore(messageElement, this.messageWrapper.firstChild);
+            this.inputEl.textContent = '';
+            await sleep(500); // время анимации появления
+            messageElement.classList.remove('sending-message');
+            for (let msgElement of messageElements) {
+                msgElement.classList.remove('sending-message');
+            }
         }
         this.inputEl.textContent = '';
-    }
-
-    _getCurrentTime() {
-        let currentTime = new Date();
-        let minutes = currentTime.getMinutes();
-        minutes = minutes < 10 ? "0" + minutes : minutes
-        return `${currentTime.getHours()}:${minutes}`;
     }
 
     // было принято решение, что при создании чата, ему будет даваться название в localStorage
