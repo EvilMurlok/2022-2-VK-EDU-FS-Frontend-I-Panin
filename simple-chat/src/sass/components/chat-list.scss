@@ -19,13 +19,18 @@
   height: 60px;
   border-radius: 50%;
   background: $yellow;
-  box-shadow: 0 0 45px $gray, 0 5px 3px #94969b;
+  box-shadow: 0 0 10px $yellow-light, 0 0 5px $yellow;
   cursor: pointer;
   transition: all 0.5s ease;
+  animation: shadow 3s infinite;
 }
 .chat-list__new-chat:hover {
   transform: scale(1.5);
   background: $yellow-hard;
+}
+
+@keyframes shadow {
+  50% {box-shadow: 0 0 45px $yellow-light, 0 0 45px $yellow;}
 }
 
 .chat-list__icon {

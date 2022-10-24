@@ -151,3 +151,41 @@ input {
     opacity: 1;
   }
 }
+
+select {
+  background-color: transparent;
+  padding: 0 1em 0 0;
+  border: none;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: inherit;
+  z-index: 1;
+  outline: none;
+}
+
+.custom-select {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+
+  select,
+  &::after {
+    grid-area: select;
+  }
+
+  min-width: 15ch;
+  max-width: 30ch;
+
+  border: 2px solid $purple;
+  border-radius: 12px;
+  padding: 0.25em 0.5em;
+  margin: 20px 0 30px;
+
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+}

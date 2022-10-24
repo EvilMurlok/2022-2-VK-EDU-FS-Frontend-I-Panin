@@ -10,6 +10,7 @@ import './app/components/Header.js';
 import './app/components/Chat.js';
 import './app/components/ChatInfo.js';
 import './app/components/ChatList.js';
+import './app/components/ChatCreation.js';
 
 // helpers
 import './helpers/commonHelpers.js';
