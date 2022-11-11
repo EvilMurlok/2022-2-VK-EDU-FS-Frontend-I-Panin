@@ -1,0 +1,19 @@
+@import "../constants.scss";
+
+.profile-img {
+  display: flex;
+  align-items: flex-end;
+  border-radius: 50%;
+  background: $bg-purple;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+  .default {
+    object-fit: contain;
+    height: 80%;
+  }
+}
