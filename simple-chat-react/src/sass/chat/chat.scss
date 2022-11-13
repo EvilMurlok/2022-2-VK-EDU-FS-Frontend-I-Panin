@@ -1,0 +1,74 @@
+@import "../constants.scss";
+@import "../chat/message.scss";
+
+.chat__background {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation-name: appearance;
+  animation-duration: 700ms;
+  animation-timing-function: ease;
+}
+.chat__container {
+  padding: $indent-size;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $screen-sm-min) {
+    width: $screen-sm-min;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.chat__message-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  //flex-direction: column-reverse;
+  overflow: auto;
+  flex: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.chat__message-wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.chat__input {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 16px;
+}
+.chat__input__field {
+  flex: 1;
+  border-radius: 12px;
+  background: $white;
+  padding: 12px;
+  position: relative;
+}
+.chat__input__text {
+  width: 90%;
+  line-height: 150%;
+}
+.chat__input__attachment {
+  position: absolute;
+  right: 12px;
+  top: 14px
+}
+.chat__input__submit {
+  background: $purple;
+  border-radius: 12px;
+  width: 46px;
+  height: 46px;
+  margin-left: 12px;
+  transition: all 0.4s ease;
+}
+.chat__input__submit:hover {
+  background: $bg-purple;
+}

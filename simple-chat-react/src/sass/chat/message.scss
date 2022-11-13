@@ -1,0 +1,60 @@
+@import "../constants.scss";
+
+.message {
+  margin-top: 8px;
+  display: flex;
+  &__time {
+    align-self: flex-end;
+    font-size: 10px;
+    margin-left: 5px;
+  }
+}
+.message__container {
+  padding: 8px;
+  display: flex;
+}
+.message__text {
+  overflow-wrap: anywhere;
+}
+// мои сообщения
+.message.me {
+  justify-content: flex-end;
+  .message__container {
+    background: $bg-purple;
+    border-radius: 16px 8px 8px 16px;
+    .message__time {
+      color: $purple;
+    }
+  }
+}
+// от собеседника
+.message.companion {
+  border-radius: 8px 16px 16px 8px;
+  justify-content: flex-start;
+  .message__container {
+    border-radius: 8px 16px 16px 8px;
+    background: $white;
+    .message__time {
+      color: $secondary;
+    }
+  }
+}
+.message__checked {
+  align-self: flex-end;
+  margin-left: 3px;
+  width: 12px;
+  height: 12px;
+}
+
+.sending-message {
+  animation-name: sending-message;
+  animation-duration: 500ms;
+}
+@keyframes sending-message {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

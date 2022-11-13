@@ -1,0 +1,40 @@
+@import "../constants.scss";
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  animation-name: appearance;
+  animation-duration: 700ms;
+}
+
+.chat-list__new-chat {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: $yellow;
+  box-shadow: 0 0 10px $yellow-light, 0 0 5px $yellow;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  animation: shadow 3s infinite;
+}
+.chat-list__new-chat:hover {
+  transform: scale(1.5);
+  background: $yellow-hard;
+}
+
+@keyframes shadow {
+  50% {box-shadow: 0 0 45px $yellow-light, 0 0 45px $yellow;}
+}
+
+.chat-list__icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
