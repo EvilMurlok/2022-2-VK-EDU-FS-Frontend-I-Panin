@@ -1,0 +1,20 @@
+{
+  "short_name": "Simple Chat",
+  "name": "Simple Chat React App",
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/chat_bg.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "https://evilmurlok.github.io/2022-2-VK-EDU-FS-Frontend-I-Panin/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
