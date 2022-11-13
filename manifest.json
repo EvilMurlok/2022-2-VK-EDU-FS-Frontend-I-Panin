@@ -3,14 +3,19 @@
   "name": "Simple Chat React App",
   "icons": [
     {
-      "src": "/images/favicon.png",
+      "src": "/2022-2-VK-EDU-FS-Frontend-I-Panin/images/favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "/images/chat_bg.png",
+      "src": "/2022-2-VK-EDU-FS-Frontend-I-Panin/images/chat_bg.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "/2022-2-VK-EDU-FS-Frontend-I-Panin/icons/burger.svg",
+      "type": "image/svg",
+      "sizes": "16x16"
     }
   ],
   "start_url": ".",
